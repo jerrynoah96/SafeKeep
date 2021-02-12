@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" type="text/css" href="../css/uikit.min.css" media="screen" />
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script src="../js/uikit.min.js"></script>
+  <script src="../js/uikit.min.js"></script>
+  <title>SafeKeep</title>
+</head>
+
+<body>
+  <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar="mode: click">
+    <a class="uk-navbar-item uk-logo" href="../html/index.html"><img src="../images/LogoWhite.png" width="40px" height="100px"
+        alt="">&nbsp; SafeKeep</a>
+    <div class="uk-navbar-right">
+
+      <ul class="uk-navbar-nav">
+        <li class="uk-active"><a href="../html/index.html">Home</a></li>
+        <li class=""><a href="about-us.html">About Us</a></li>
+        <li class=""><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="#"><button class="uk-button enableEthereumButton uk-button-default">Connect</button></a></li>
+      </ul>
+
+    </div>
+  </nav>
+  <header>
+    <div class="uk-flex">
+      <div class="header-text uk-animation-slide-left-small">
+        <div class="header-info">
+          <h1>An Insurance Policy for your Ethereum and ERC-20 Tokens</h1>
+          <p>SafeKeep is a wallet that guarantees the safety and also access to your token,<br /> no matter the
+            consequences</p>
+          <button class="uk-button enableEthereumButton uk-button-default">Connect</button>
+        </div>
+      </div>
+      <div class="illus">
+        <div class="image-container">
+          <img src="../images/eth-diamond-rainbow.png" alt="">
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- The web3 cdn has to be added on anypage in which web3 is invoked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.0/web3.min.js"></script>
+  <script src="../js/web3-auto.js"></script>
+</body>
+
+</html>

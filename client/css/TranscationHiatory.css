@@ -1,0 +1,177 @@
+body{
+    width: 100%;
+    height: 100vh;
+}
+
+.uk-navbar-container {
+    width: 100%;
+    background-color: #001845 !important;
+    color: #ffffff !important;
+}
+.uk-navbar-nav>li>a {
+    color: #ffffff !important;
+    text-transform: capitalize !important;
+}
+.font-size-nav {
+    font-size: 40px !important;
+}
+.logo {
+    height: 45px;;
+}
+.font-size-user {
+    font-size: 20px !important;
+}
+.uk-link, a {
+    color: #999999 !important;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px !important;
+}
+.avatar {
+    height: 65px;
+    border-radius: 50%;
+    width: 65px;
+}
+.uk-navbar-dropdown {
+    left: 100px !important;
+}
+
+/* NavBar  */
+.leftSpacing {
+    margin-left: 57rem;
+}
+.navFormat {
+    background-color: rgb(0, 24, 69) !important ;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.rightSpacing {
+    margin-right: 170px;
+}
+
+/* section body  */
+
+.container{
+    margin-left: 0 !important;
+}
+
+.btn-primary{
+     background-color: rgb(0, 24, 69) !important ;
+      border-radius: 20px;
+    
+    
+ }
+ .btn-secondary{
+      border-radius: 20px;
+
+ }
+
+
+
+
+/* Extra small devices (portrait phones, less than 576px)*/
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 576px) { 
+    .btn-lg{
+    
+    display: none;
+    visibility: hidden;
+}
+
+.display{
+     display: none;
+     visibility: hidden;
+ }
+    
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+    .btn-sm{
+    display: none;
+    visibility: hidden;
+}
+
+    
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .btn-sm{
+    display: none;
+    visibility: hidden;
+}
+
+    
+ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .btn-sm{
+    display: none;
+    visibility: hidden;
+}
+ }
+
+
+/* Extra small devices (portrait phones, less than 576px) 
+@media (max-width: 575.98px) { 
+   
+ .btn-lg{
+     background-color: rgb(0, 24, 69) !important ;
+     visibility:hidden;
+     display: none;
+ }
+ 
+  .display{
+     display: none;
+     visibility: hidden;
+ }
+
+}
+ 
+*/
+/* Small devices (landscape phones, 576px and up) 
+@media (min-width: 576px) and (max-width: 767.98px) { 
+   .btn-lg{
+     background-color: rgb(0, 24, 69) !important ;
+     visibility:hidden;
+     display: none;
+ }
+ 
+ .display{
+     display: none;
+     visibility: hidden;
+ }
+}
+*/
+/* Medium devices (tablets, 768px and up) 
+@media (min-width: 768px) and (max-width: 991.98px) { 
+.btn-sm{
+    visibility: hidden;
+    display: none;
+}
+ .display{
+     display: none;
+     visibility: hidden;
+ }
+ }
+*/
+/* Large devices (desktops, 992px and up) 
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+   .btn-sm{
+    visibility: hidden;
+    display: none;
+}
+ .display{
+     display: none;
+     visibility: hidden;
+ }
+
+ }
+
+
+ */
