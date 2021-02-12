@@ -24,7 +24,7 @@ contract SafeKeep is Ownable,ReentrancyGuard {
     constructor() public {
     assets[0] = address(0xB597cd8D3217ea6477232F9217fa70837ff667Af); // Kovan AAVE
     assets[1] = address(0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD); // Kovan DAI
-    assets[2] = address(0x743603Eb42f10843E9EF18d6EAf2e099c7a451bB); //Kovan iSFP
+    //assets[2] = address(0x743603Eb42f10843E9EF18d6EAf2e099c7a451bB); //Kovan iSFP
 
     }
      
