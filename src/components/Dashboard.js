@@ -304,7 +304,7 @@ const Dashboard = () => {
 
   setInterval(() => {
     handleTokenAPI()
-  }, 3000);
+  }, 5000);
 
   const handleTokenAPI = async()=> {
 
