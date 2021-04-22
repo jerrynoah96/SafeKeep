@@ -11,6 +11,7 @@ import SafeKeep from '../contracts/artifacts/safeKeep.json';
 import ERC20 from '../contracts/artifacts/ERC20.json';
 import SFKP from '../contracts/artifacts/SFKP.json';
 import moment from 'moment';
+import axios from 'axios';
 import '../App.css';
 
 
@@ -25,7 +26,13 @@ const Dashboard = () => {
   const [sfkpBalance, setSfkpBalance] = useState('0');
   const [bkpAddress, setBkpAddress] = useState('');
   const [lastPing, setLastPing] = useState('');
-  const [modalType, setModalType] = useState('')
+  const [modalType, setModalType] = useState('');
+  const [EtherUsd, setEtherUsd] = useState('');
+  const [EtherPercent, setEtherPercent] = useState('');
+
+  const [DaiUsd, setDaiUsd] = useState('');
+  const [DaiPercent, setDaiPercent] = useState('');
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [inputValue, setInputVal] = useState({
@@ -140,6 +147,7 @@ const Dashboard = () => {
       setLastPing(lastPing);
       let etherBalance = await safeKeep.methods.getBalance().call({ from: userAccount });
       setEthBalance(etherBalance.toString())
+
       let userInterest = await safeKeep.methods.checkUserInterest().call({ from: userAccount })
       setSfkpBalance(userInterest.toString());
       let daiBalance = await safeKeep.methods.checkTokenBalance(kDaiData.address).call({ from: userAccount });
@@ -284,11 +292,51 @@ const Dashboard = () => {
       console.log(error);
     }
   }
+  
 
   useEffect(() => {
     loadWeb3()
     loadData()
+    handleTokenAPI()
+
+    
   }, [loadWeb3, loadData, ethBalance, tokenBalance, account])
+
+  setInterval(() => {
+    handleTokenAPI()
+  }, 3000);
+
+  const handleTokenAPI = async()=> {
+
+    const response = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum%2Cdai&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h");
+    const parsedRes = await response.json();
+    console.log(parsedRes, 'now coingecko')
+    //eth Data
+    const ethData = parsedRes[0];
+    const ethPercent = ethData.price_change_percentage_24h;
+    const ethPrice = ethData.current_price;
+    const ethBal = web3.utils.fromWei(ethBalance, 'ether');
+    const ethUsdBal = (ethBal * ethPrice).toFixed(0);
+    setEtherUsd(ethUsdBal);
+    setEtherPercent(ethPercent);
+
+    //Dai Data
+
+    const DaiData = parsedRes[1];
+    const DaiPercent = DaiData.price_change_percentage_24h;
+    const DaiPrice = DaiData.current_price;
+    const DaiBal = web3.utils.fromWei(tokenBalance, 'ether');
+    const DaiUsdBal = (DaiBal * ethPrice).toFixed(0);
+    setDaiUsd(DaiUsdBal);
+    setDaiPercent(DaiPercent)
+
+    //total balance
+  //  const totalBalance = DaiUsdBal + ethUsdBal;
+   // console.log(totalBalance, 'total balance reversed') 
+
+    
+
+  }
 
   return (
     <div className="dashboard">
@@ -297,7 +345,7 @@ const Dashboard = () => {
         {getModal(modalType, onChange)}
       </SFPModal>
 
-      <nav className="uk-navbar-container" uk-navbar="mode: click">
+      <nav className="uk-navbar-container nav" uk-navbar="mode: click">
         <div className="uk-navbar-left">
           <ul className="uk-navbar-nav">
             <li className="uk-active">
@@ -323,14 +371,15 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      <div className="dashboard-container">
+      <div className="dashboard-container dashboard-main">
         {/* uk-child-width-1-3@m */}
         <div className="uk-flex  uk-flex-left uk-margin-medium-top uk-grid-small  paddingCards" uk-grid="true">
           <div className="uk-width-1-2@s">
             <div className="uk-card uk-card-default uk-card-body balance-card">
               <h3 className="uk-card-title">Ethereum Balance</h3>
               <p className="uk-card-paragraph user-balance">{`${web3?.utils?.fromWei(ethBalance, 'ether')} ETH`}</p>
-              {/* <span className=" user-balance-usd">0 USD</span> */}
+               <p className="user-usd-balance">{`${EtherUsd} USD`}</p>
+               <p className="token-percent">{`${EtherPercent} %`}</p>
               <div className=" uk-text-left uk-margin-medium-left">
                 {/* <a href="#withdraw-modal" uk-toggle> */}
                 <button onClick={() => {
@@ -353,7 +402,8 @@ const Dashboard = () => {
             <div className="uk-card uk-margin-medium-top uk-card-default uk-card-body balance-card">
               <h3 className="uk-card-title">DAI Balance</h3>
               <p className="uk-card-paragraph user-balance">{`${web3?.utils?.fromWei(tokenBalance, 'ether')} DAI`}</p>
-              {/* <span class=" user-balance-usd">0 USD</span> */}
+              <p className="user-usd-balance">{`${DaiUsd} USD`}</p>
+               <p className="token-percent">{`${DaiPercent} %`}</p>
               <div className=" uk-text-left uk-margin-medium-left">
                 <button onClick={() => {
                   setModalType('Withdraw DAI')
@@ -370,13 +420,24 @@ const Dashboard = () => {
                     </button>
               </div>
             </div>
+            {/* SafeKeep board
             <div className="uk-card uk-margin-medium-top uk-card-default uk-card-body balance-card">
               <h3 className="uk-card-title">SFP Balance</h3>
               <p className="uk-card-paragraph user-balance">{`${web3?.utils?.fromWei(sfkpBalance, 'ether')} SFP`}</p>
-              {/* <span class=" user-balance-usd">0 USD</span> */}
-            </div>
-          </div>
+              { <span class=" user-balance-usd">0 USD</span> }
+            </div> */}
+          </div> 
           <div className="uk-width-1-3@s" style={{ marginLeft: 'auto' }}>
+
+         {/* <div className="uk-card uk-card-default uk-card-body balance-card">
+              <h3 className="uk-card-title">Balances</h3>
+              <p className="uk-card-paragraph user-info" style={{ padding: '5px' }}></p>
+              <div className=" uk-text-left uk-margin-medium-left">
+                <p>Total balance: { `${EtherUsd + DaiUsd} USD`}</p>
+              </div>
+            </div> */}
+
+
             <div className="uk-card uk-card-default uk-card-body balance-card">
               <h3 className="uk-card-title">Backup Address</h3>
               <p className="uk-card-paragraph user-info" style={{ padding: '5px' }}>{smartTrim(bkpAddress, 15)}</p>
@@ -400,9 +461,10 @@ const Dashboard = () => {
                 </button>
               </div>
             </div>
+            {/*
             <Link to="/admin">
               <Button className="uk-margin-medium-right uk-margin-medium-top" type="primary">Go To Admin &gt;</Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
         {/* <div class="">

@@ -43,7 +43,7 @@ const Home = () => {
           </div>
           <div className="illus">
             <div className="image-container">
-              <img src="../images/eth-diamond-rainbow.png" alt="eth logo" />
+              <img src="../images/LogoBlack.png" alt="safeKeep logo" />
             </div>
           </div>
         </div>

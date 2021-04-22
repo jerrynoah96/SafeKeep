@@ -41,6 +41,8 @@ export const AuthProvider = ({ children }) => {
         window.alert("you're not connected to the Kovan network")
         return;
       }
+
+       
       const [account] = await window.ethereum.request({
         method: 'eth_requestAccounts'
       });
