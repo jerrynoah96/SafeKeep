@@ -14,6 +14,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@walletconnect/web3-provider": "^1.4.1",
     "antd": "^4.12.2",
     "axios": "^0.21.1",
     "coingecko-api": "^1.0.10",
@@ -27,7 +28,7 @@
     "react-time-ago": "^6.2.2",
     "react-toastify": "^7.0.3",
     "web-vitals": "^0.2.4",
-    "web3": "^1.3.0"
+    "web3": "^1.3.5"
   },
   "eslintConfig": {
     "extends": [

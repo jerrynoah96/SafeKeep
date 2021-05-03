@@ -1,7 +1,7 @@
 import '../App.css';
 const Roadmap = () => {
   return (
-    <div>
+    <div className="roadmap-page">
         <h1 className="roadmap-title">Roadmap</h1>
         <main className="roadmap">
           <p className="road-map-item"> <span>May - December 2021</span>

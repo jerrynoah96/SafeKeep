@@ -38,9 +38,13 @@ const Home = () => {
             <div className="header-info">
               <h1 className="header-main">SafeKeep</h1>
               <h4 className="description">provide guaranteed storage and safety backup for crypto assets</h4>
+              <div className="home-btns">
+
               <button onClick={handleConnect} className="uk-button enableEthereumButton uk-button-default">{account.length ? 'Connected' : 'Connect'}</button>
-              <a href="https://pdfhost.io/v/EivUfGRN5_litePaperpdf.pdf" tabindex="-1" target="_blank" className="uk-button litepaper-link uk-button-default">Lite Paper</a>
+              <a href="https://pdfhost.io/v/~8~t0Q~xb_SafeKeep_Litepaper_2pdf.pdf" tabindex="-1" target="_blank" className="uk-button litepaper-link uk-button-default">Lite Paper</a>
               
+                
+              </div>
               <p className="sponsored-by">Built on  <img src="../images/eth-diamond-rainbow.png" width="55px"  alt="ethereum logo"/></p>
             </div>
           </div>
@@ -49,7 +53,11 @@ const Home = () => {
               <img src="../images/LogoBlack.png" className="safeKeep-img" alt="safeKeep logo" />
             </div>
           </div>
-        </div>
+    </div> 
+
+    <div>
+
+    </div>
       </header>
       <div className="footer">
         <div className="social-media-icons">
